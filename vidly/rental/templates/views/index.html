@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Site</title>
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../static/index.css">
+</head>
+
+<body id="bod">
+
+    <!-- header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="https://www.netflix.com/browse"> Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rental/{{ movie.id }}"> Catalogue <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/rental/">Admin</a>
+                    </li>
+                </ul>
+
+        </nav>
+
+        <div>
+            <h1 class="site-name">Nollyflix</h1>
+        </div>
+    </header>
+    <!-- content -->
+    <h4>List of Movies</h4>
+    {% for movie in movies %}
+    <div class="container">
+
+
+        <div class="form">
+
+            <div class="row">
+
+                <div class="col-4">
+                    <label>Title:</label>
+                </div>
+
+                <div class="col-8">
+                    {{ movie.title }}
+
+                </div>
+            </div> <!-- end title -->
+
+            <div class="row">
+
+                <div class="col-4">
+                    <label>Genre:</label>
+                </div>
+                <div class="col-8">
+                    {{ movie.genre }}
+                </div>
+            </div> <!-- end genre -->
+
+            <div class="row">
+
+                <div class="col-4">
+                    <label>Star:</label>
+                </div>
+                <div class="col-8">
+                    {{ movie.star }}
+                </div>
+            </div> <!-- end star -->
+
+            <div class="row">
+
+                <div class="col-4">
+                    <label>Director:</label>
+                </div>
+                <div class="col-8">
+                    {{ movie.director }}
+                </div>
+            </div> <!-- end director -->
+
+            <div class="row">
+
+                <div class="col-4">
+                    <label>Release Year:</label>
+                </div>
+                <div class="col-8">
+                    {{ movie.release_year }}
+                </div>
+            </div> <!-- end release_year -->
+
+            <div class="row">
+
+                <div class="col-4">
+                    <label>Price:</label>
+                </div>
+                <div class="col-8">
+                    ${{ movie.price }}
+                </div>
+            </div> <!-- end movie price -->
+
+            <div class="row">
+
+                <div class="col-4">
+                    <label>Stock:</label>
+                </div>
+                <div class="col-8">
+                    {{ movie.in_stock }}
+                </div>
+            </div> <!-- end stock -->
+
+            <div class="row">
+
+                <div class="col-4">
+                    <label>Image:</label>
+                </div>
+                <div class="col-8">
+                    <img class="main-pic-img" src="{{ movie.image_url }}" alt="movie cover">
+                </div>
+            </div> <!-- end stock -->
+
+            <br>
+
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-8">
+
+                    <button class="btn btn-primary" onclick="window.location.href = '{{ movie.id }}';">Click Here to
+                        Rent</button>
+
+                    <h3>{{ insert_me }}</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+    <!-- The Footer -->
+    <footer class="site-footer">
+        &copy; 2020 | Nollyflix | Trading as Sandielocks Inc | All rights reserved
+    </footer>
+
+
+</body>
+
+</html>
